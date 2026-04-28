@@ -3,615 +3,607 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>UniStream - Best Videos</title>
+<title>Zara Sophia - Videos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#1a1a1a;min-height:100vh;padding-top:70px}
+body{font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a;padding-top:65px}
 
-/* ─── NAVBAR ─── */
-.navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06);z-index:1000;padding:0 24px;height:65px;display:flex;align-items:center;justify-content:space-between;transition:.3s}
-.navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
-.logo{font-size:22px;font-weight:800;text-decoration:none;display:flex;align-items:center;gap:8px}
-.logo span{background:linear-gradient(135deg,#e53935,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:4px}
-.nav-links a{padding:8px 18px;border-radius:10px;text-decoration:none;color:#555;font-size:14px;font-weight:500;transition:all .3s ease;position:relative}
-.nav-links a:hover{color:#e53935;background:rgba(229,57,53,.06)}
-.nav-links a.active{color:#e53935;background:rgba(229,57,53,.1)}
-.nav-links a i{margin-right:6px}
-.search-box{display:flex;align-items:center;background:#f5f5f5;border-radius:24px;padding:0 16px;border:1px solid transparent;transition:all .3s ease;max-width:380px;width:100%}
-.search-box:focus-within{border-color:#e53935;background:#fff;box-shadow:0 0 0 4px rgba(229,57,53,.08)}
-.search-box input{background:transparent;border:none;padding:10px 12px;font-size:14px;outline:none;width:100%;color:#333}
-.search-box button{background:none;border:none;color:#999;cursor:pointer;font-size:15px;transition:.3s;padding:8px 0}
-.search-box button:hover{color:#e53935}
+.navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.05);z-index:1000;padding:0 28px;height:65px;display:flex;align-items:center;gap:16px}
+.navbar .logo{font-size:20px;font-weight:800;color:#1a1a1a;display:flex;align-items:center;gap:8px;text-decoration:none}
+.navbar .logo i{color:#e53935;font-size:22px}
+.navbar .profile-badge{display:flex;align-items:center;gap:10px;margin-left:auto;background:#f5f5f5;padding:6px 16px 6px 10px;border-radius:24px;font-size:13px;font-weight:500}
+.navbar .profile-badge img{width:30px;height:30px;border-radius:50%;object-fit:cover}
 
-/* ─── CATEGORIES ─── */
-.categories-bar{background:#fff;padding:14px 24px;border-bottom:1px solid rgba(0,0,0,.06);display:flex;gap:8px;overflow-x:auto;position:sticky;top:65px;z-index:100}
-.categories-bar::-webkit-scrollbar{height:0}
-.cat-btn{padding:7px 18px;border-radius:20px;border:none;font-size:13px;font-weight:500;cursor:pointer;transition:all .3s ease;white-space:nowrap;background:#f5f5f5;color:#555;font-family:inherit}
-.cat-btn:hover{background:#eee;transform:translateY(-1px)}
-.cat-btn.active{background:#e53935;color:#fff;box-shadow:0 4px 12px rgba(229,57,53,.25)}
+.container{max-width:1200px;margin:0 auto;padding:0 28px}
 
-/* ─── CONTAINER ─── */
-.container{max-width:1300px;margin:0 auto;padding:0 24px}
+.profile-header{text-align:center;padding:36px 20px 24px;border-bottom:1px solid rgba(0,0,0,.04)}
+.profile-header .avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #e53935;padding:3px;margin-bottom:12px}
+.profile-header h1{font-size:22px;font-weight:700;margin-bottom:6px}
+.profile-header p{color:#888;font-size:14px;margin-bottom:10px}
+.profile-header .stats{display:flex;justify-content:center;gap:30px;margin-top:14px;font-size:13px}
+.profile-header .stats span{color:#888}
+.profile-header .stats strong{color:#1a1a1a;display:block;font-size:16px;margin-bottom:2px}
+.profile-header .refresh-btn{padding:8px 22px;background:#e53935;color:#fff;border:none;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;transition:.3s;margin-top:12px;font-family:inherit}
+.profile-header .refresh-btn:hover{background:#c62828;transform:translateY(-2px);box-shadow:0 4px 14px rgba(229,57,53,.3)}
+.profile-header .refresh-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
-/* ─── HERO ─── */
-.hero{background:linear-gradient(135deg,#fff5f5,#fff0f0,#fff);padding:40px 24px;text-align:center;border-bottom:1px solid rgba(0,0,0,.04)}
-.hero h1{font-size:36px;font-weight:800;margin-bottom:10px;background:linear-gradient(135deg,#1a1a1a,#e53935);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{color:#777;font-size:16px;max-width:500px;margin:0 auto;line-height:1.6}
-
-/* ─── VIDEO GRID ─── */
-.featured{padding:30px 0}
-.section-title{font-size:20px;font-weight:700;margin-bottom:20px;display:flex;align-items:center;gap:10px;color:#1a1a1a}
+.featured{padding:24px 0}
+.section-title{font-size:18px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .section-title i{color:#e53935}
-.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.section-title .count{color:#aaa;font-weight:400;font-size:14px}
 
-.video-card{background:#fff;border-radius:16px;overflow:hidden;cursor:pointer;transition:all .4s cubic-bezier(.25,.46,.45,.94);border:1px solid rgba(0,0,0,.06);position:relative}
-.video-card:hover{transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.1);border-color:rgba(229,57,53,.15)}
-.video-card:hover .thumb::after{opacity:1}
-.video-card:hover .play-circle{transform:translate(-50%,-50%) scale(1.1);opacity:1}
-.thumb{width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;position:relative;overflow:hidden}
-.thumb::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.15);opacity:0;transition:.4s}
-.play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:#e53935;border-radius:50%;display:flex;align-items:center;justify-content:center;opacity:.85;transition:all .4s cubic-bezier(.25,.46,.45,.94);box-shadow:0 4px 20px rgba(229,57,53,.4)}
-.play-circle i{color:#fff;font-size:20px;margin-left:3px}
-.thumb .duration{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.75);color:#fff;font-size:11px;padding:3px 8px;border-radius:6px;font-weight:500}
-.thumb .source-badge{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.65);color:#fff;font-size:10px;padding:4px 10px;border-radius:6px;backdrop-filter:blur(4px);display:flex;align-items:center;gap:5px;opacity:0;transition:.3s}
-.video-card:hover .source-badge{opacity:0}
-.info{padding:14px}
-.info h3{font-size:14px;font-weight:600;color:#1a1a1a;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;transition:.3s}
-.video-card:hover .info h3{color:#e53935}
-.meta{display:flex;align-items:center;gap:14px;margin-top:8px;font-size:12px;color:#999;flex-wrap:wrap}
-.meta span{display:flex;align-items:center;gap:4px}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.video-card{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .4s cubic-bezier(.25,.46,.45,.94)}
+.video-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.08);border-color:transparent}
+.thumb{width:100%;aspect-ratio:16/9;background-size:cover;background-position:center;position:relative}
+.thumb .play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;opacity:0;transition:.4s}
+.video-card:hover .play-overlay{opacity:1}
+.play-circle{width:50px;height:50px;background:#e53935;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(229,57,53,.35);transition:.3s}
+.play-circle i{color:#fff;font-size:17px;margin-left:2px}
+.info{padding:12px}
+.info h3{font-size:13px;font-weight:600;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.4;color:#1a1a1a}
+.meta{display:flex;align-items:center;gap:12px;margin-top:6px;font-size:12px;color:#999;flex-wrap:wrap}
 
-/* ─── MODAL ─── */
-.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px;animation:fadeIn .3s ease}
-.modal-overlay.active{display:flex}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.modal-content{background:#fff;border-radius:20px;width:100%;max-width:860px;max-height:90vh;overflow-y:auto;animation:slideUp .4s cubic-bezier(.25,.46,.45,.94);box-shadow:0 40px 100px rgba(0,0,0,.3)}
-@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-.modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff;border:none;font-size:20px;cursor:pointer;transition:.3s;z-index:10;display:flex;align-items:center;justify-content:center}
-.modal-close:hover{background:#e53935;transform:rotate(90deg)}
-.modal-player{position:relative;background:#000;border-radius:20px 20px 0 0;overflow:hidden}
-.modal-player video{width:100%;max-height:65vh;display:block;background:#000;cursor:pointer}
-.modal-meta{padding:24px}
-.modal-meta h2{font-size:20px;font-weight:700;color:#1a1a1a;margin-bottom:12px}
-.modal-info{display:flex;gap:20px;font-size:13px;color:#888;flex-wrap:wrap}
-.modal-info span{display:flex;align-items:center;gap:5px}
+.watch-page{display:none}
+.watch-page.active{display:block}
+.video-player-wrap{background:#000;width:100%;position:relative}
+.video-player-wrap video{width:100%;max-height:80vh;display:block;margin:0 auto;background:#000}
+.player-bottom{max-width:1000px;margin:0 auto;padding:20px 28px}
+.video-details h1{font-size:18px;font-weight:700;color:#1a1a1a;margin-bottom:8px;line-height:1.4}
+.video-details .meta-row{display:flex;gap:16px;font-size:13px;color:#888;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid #eee;margin-bottom:14px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:#f5f5f5;border:none;border-radius:10px;font-size:13px;font-weight:500;cursor:pointer;transition:.3s;color:#555;margin-bottom:12px;font-family:inherit}
+.back-btn:hover{background:#e53935;color:#fff}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:12px}
+.related-card{background:#fff;border:1px solid rgba(0,0,0,.05);border-radius:10px;overflow:hidden;cursor:pointer;transition:.3s}
+.related-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+.related-card .thumb{aspect-ratio:16/9;background-size:cover;background-position:center}
+.related-card .info{padding:8px}
+.related-card .info h3{font-size:12px;font-weight:500}
 
-/* ─── UPLOAD ─── */
-.upload-area{background:#fff;border:2px dashed #ddd;border-radius:16px;padding:50px 30px;text-align:center;transition:all .4s ease}
-.upload-area:hover{border-color:#e53935;background:#fff5f5}
-.upload-area i{font-size:48px;color:#e53935;margin-bottom:15px;display:block}
-.upload-area h3{font-size:18px;margin-bottom:8px;color:#1a1a1a}
-.upload-area p{color:#888;font-size:14px;margin-bottom:20px}
-.url-input-group{display:flex;gap:10px;max-width:600px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.url-input-group input{flex:1;min-width:250px;padding:14px 18px;border:2px solid #e0e0e0;border-radius:12px;font-size:14px;outline:none;transition:.3s;font-family:inherit}
-.url-input-group input:focus{border-color:#e53935;box-shadow:0 0 0 4px rgba(229,57,53,.08)}
-.btn-primary{padding:14px 28px;background:#e53935;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;transition:all .3s ease;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:#c62828;transform:translateY(-2px);box-shadow:0 8px 25px rgba(229,57,53,.3)}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
-.platform-tags{display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap}
-.platform-tags span{display:flex;align-items:center;gap:5px;font-size:13px;color:#888;padding:6px 14px;border-radius:8px;background:#f9f9f9}
-
-/* ─── ALERTS ─── */
-.alert{padding:16px 20px;border-radius:12px;margin-bottom:20px;font-size:14px;display:flex;align-items:center;gap:10px;animation:slideDown .4s ease}
-@keyframes slideDown{from{transform:translateY(-10px);opacity:0}to{transform:translateY(0);opacity:1}}
-.alert-success{background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9}
-.alert-error{background:#ffebee;color:#c62828;border:1px solid #ffcdd2}
-.alert-success a{color:#2e7d32;font-weight:600}
-
-/* ─── LOADING ─── */
-.loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:3000}
+.loading-screen{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:3000}
 .loading-screen.active{display:flex}
-.loading-bar{width:200px;height:3px;background:#f0f0f0;border-radius:10px;overflow:hidden;margin-top:20px}
-.loading-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#e53935,#ff6b6b);border-radius:10px;animation:loading 1.5s infinite ease}
-@keyframes loading{0%{width:0;margin-left:0}50%{width:60%;margin-left:20%}100%{width:0;margin-left:100%}}
+.loading-screen p{color:#666;font-size:14px;margin-top:12px}
+.spinner{width:44px;height:44px;border:3px solid #eee;border-top-color:#e53935;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ─── STATS BADGE ─── */
-.stat-badge{display:inline-flex;align-items:center;gap:6px;background:#f5f5f5;padding:6px 14px;border-radius:20px;font-size:13px;color:#666}
-.stat-badge i{color:#e53935}
+.empty-state{grid-column:1/-1;text-align:center;padding:80px 20px;color:#999}
+.empty-state i{font-size:48px;color:#ddd;margin-bottom:14px;display:block}
+.empty-state h3{color:#666;font-weight:600;margin-bottom:6px}
 
-/* ─── RESPONSIVE ─── */
 @media(max-width:768px){
-  .navbar{padding:0 16px}
-  .nav-links a{padding:6px 12px;font-size:12px}
-  .nav-links a span{display:none}
-  .search-box{max-width:180px}
-  .hero h1{font-size:26px}
-  .video-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
-  .info h3{font-size:13px}
-  .modal-content{margin:10px}
+  body{padding-top:60px}
+  .navbar{padding:0 16px;height:60px}
+  .container{padding:0 16px}
+  .video-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+  .profile-header .avatar{width:60px;height:60px}
+  .profile-header h1{font-size:18px}
+  .related-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 }
 </style>
 </head>
 <body>
 
 <!-- ═══ NAVBAR ═══ -->
-<nav class="navbar" id="navbar">
-  <a href="#" class="logo" onclick="showPage('home')"><i class="fas fa-play-circle" style="color:#e53935;-webkit-text-fill-color:#e53935"></i> <span>UniStream</span></a>
-  <div class="nav-links">
-    <a href="#" onclick="showPage('home')" id="navHome" class="active"><i class="fas fa-home"></i> <span>Home</span></a>
-    <a href="#" onclick="showPage('trending')" id="navTrending"><i class="fas fa-fire"></i> <span>Trending</span></a>
-    <a href="#" onclick="showPage('upload')" id="navUpload"><i class="fas fa-plus-circle"></i> <span>Upload</span></a>
+<nav class="navbar">
+  <a href="#" class="logo" onclick="showHome()"><i class="fas fa-play-circle"></i> <span>Zara Sophia</span></a>
+  <div class="profile-badge" id="profileBadge">
+    <img src="https://via.placeholder.com/30" alt="" id="navAvatar">
+    <span id="navName">@zaraso_phia</span>
   </div>
-  <form class="search-box" onsubmit="searchVideos(event)">
-    <input type="text" id="searchInput" placeholder="Search videos..." required>
-    <button type="submit"><i class="fas fa-search"></i></button>
-  </form>
 </nav>
-
-<!-- ═══ CATEGORIES ═══ -->
-<div class="categories-bar" id="categoriesBar"></div>
-
-<!-- ═══ HERO ═══ -->
-<div class="hero">
-  <h1>Watch Unlimited Videos</h1>
-  <p>Your one-stop platform for the best videos from around the web — all in one place</p>
-</div>
 
 <!-- ═══ MAIN ═══ -->
 <main class="container">
-  <section class="featured">
-    <div class="section-title" id="sectionTitle"><i class="fas fa-star"></i> Latest Videos</div>
-    <div class="video-grid" id="videoGrid">
-      <div style="grid-column:1/-1;text-align:center;padding:60px;color:#999;">
-        <i class="fas fa-spinner fa-spin fa-2x"></i>
-        <p style="margin-top:15px">Loading videos...</p>
-      </div>
+
+  <!-- PROFILE HEADER -->
+  <div class="profile-header" id="profileHeader">
+    <img src="https://via.placeholder.com/80" alt="" class="avatar" id="avatar">
+    <h1 id="fullName">zaraso_phia</h1>
+    <p id="bio"><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram Videos</p>
+    <div class="stats">
+      <div><strong id="videoCount">0</strong><span>Videos</span></div>
+      <div><strong id="totalViews">0</strong><span>Total Views</span></div>
     </div>
-  </section>
+    <button class="refresh-btn" onclick="fetchFeed()" id="refreshBtn"><i class="fas fa-sync-alt"></i> Refresh</button>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div id="homePage">
+    <section class="featured">
+      <div class="section-title">
+        <i class="fas fa-video"></i> All Videos <span class="count" id="videoCountLabel"></span>
+      </div>
+      <div class="video-grid" id="videoGrid">
+        <div class="empty-state">
+          <i class="fas fa-spinner fa-spin"></i>
+          <h3>Loading videos...</h3>
+          <p id="loadStatus">Fetching from Instagram</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
 </main>
 
-<!-- ═══ MODAL ═══ -->
-<div class="modal-overlay" id="videoModal">
-  <div class="modal-content" style="position:relative">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <div id="modalBody">
-      <div class="modal-player">
-        <video id="modalVideo" controls style="width:100%;max-height:65vh;background:#000;">
-          <source src="" type="video/mp4">
-        </video>
-      </div>
-      <div class="modal-meta">
-        <h2 id="modalTitle">Video Title</h2>
-        <div class="modal-info" id="modalInfo"></div>
-      </div>
+<!-- ═══ WATCH PAGE ═══ -->
+<div class="watch-page" id="watchPage">
+  <div class="video-player-wrap">
+    <video id="player" controls autoplay playsinline></video>
+  </div>
+  <div class="player-bottom">
+    <button class="back-btn" onclick="closeWatch()"><i class="fas fa-arrow-left"></i> Back</button>
+    <div class="video-details">
+      <h1 id="watchTitle">Video Title</h1>
+      <div class="meta-row" id="watchMeta"></div>
+      <h4 style="font-size:15px;font-weight:600;margin-bottom:10px;color:#1a1a1a">More Videos</h4>
+      <div class="related-grid" id="relatedGrid"></div>
     </div>
   </div>
 </div>
 
 <!-- ═══ LOADING ═══ -->
 <div class="loading-screen" id="loadingScreen">
-  <i class="fas fa-play-circle" style="font-size:40px;color:#e53935;margin-bottom:10px"></i>
-  <p id="loadingText" style="color:#666;font-size:14px">Loading...</p>
-  <div class="loading-bar"><span></span></div>
+  <div class="spinner"></div>
+  <p id="loadingText">Loading...</p>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-// CONFIG — আপনার Cloudflare Worker URL বসান
-// ═══════════════════════════════════════════════════
-const WORKER_URL = 'https://your-worker.workers.dev';
-// ═══════════════════════════════════════════════════
+// ═════════════════════════════════════════════════════════
+// ⚡ শুধু GitHub Pages — কোনো সার্ভার/Worker লাগবে না
+// ═════════════════════════════════════════════════════════
+const INSTAGRAM_USERNAME = 'zaraso_phia';
 
-// ──── DEMO VIDEO DATA (প্রি-লোডেড ভিডিও) ────
-const DEMO_VIDEOS = [
-  {
-    id: 1001, title: 'Cute Cats Compilation 🐱 Best Funny Cats 2025',
-    platform: 'youtube', category: 'Entertainment',
-    thumbnail: 'https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=tntOCGkgt98',
-    views: 45231, duration: '8:24', timestamp: '2026-04-20T10:30:00Z'
-  },
-  {
-    id: 1002, title: 'Top 10 Amazing Dance Videos on TikTok',
-    platform: 'tiktok', category: 'Music',
-    thumbnail: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/xxx~tplv-ph-10.jpg',
-    videoUrl: 'https://www.tiktok.com/@dance/video/7412345678901234567',
-    views: 128934, duration: '0:45', timestamp: '2026-04-22T14:00:00Z'
-  },
-  {
-    id: 1003, title: 'Incredible Nature Drone Shots - 4K Aerial View',
-    platform: 'youtube', category: 'Education',
-    thumbnail: 'https://i.ytimg.com/vi/5_Ir3rM3bHU/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=5_Ir3rM3bHU',
-    views: 89567, duration: '12:05', timestamp: '2026-04-21T08:15:00Z'
-  },
-  {
-    id: 1004, title: 'Best Instagram Reels Compilation 😍',
-    platform: 'instagram', category: 'Entertainment',
-    thumbnail: 'https://img.freepik.com/free-photo/video-production-concept-with-woman-recording-video_23-2150323935.jpg',
-    videoUrl: 'https://www.instagram.com/p/C1234567890/',
-    views: 234567, duration: '0:30', timestamp: '2026-04-23T16:45:00Z'
-  },
-  {
-    id: 1005, title: 'Funny Dog Videos That Will Make You Laugh',
-    platform: 'youtube', category: 'Comedy',
-    thumbnail: 'https://i.ytimg.com/vi/1_H1YVj5mWQ/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=1_H1YVj5mWQ',
-    views: 345678, duration: '10:15', timestamp: '2026-04-19T12:00:00Z'
-  },
-  {
-    id: 1006, title: 'TikTok Dance Challenge 2025 🔥',
-    platform: 'tiktok', category: 'Music',
-    thumbnail: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/yyy~tplv-ph-10.jpg',
-    videoUrl: 'https://www.tiktok.com/@music/video/7456789012345678901',
-    views: 567890, duration: '0:35', timestamp: '2026-04-24T09:30:00Z'
-  },
-  {
-    id: 1007, title: 'Amazing Cooking Recipes - 5 Minute Meals',
-    platform: 'youtube', category: 'Education',
-    thumbnail: 'https://i.ytimg.com/vi/8SB4J7R5LbQ/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=8SB4J7R5LbQ',
-    views: 78901, duration: '5:30', timestamp: '2026-04-22T11:00:00Z'
-  },
-  {
-    id: 1008, title: 'Football Skills & Goals Compilation ⚽',
-    platform: 'facebook', category: 'Sports',
-    thumbnail: 'https://img.freepik.com/free-photo/soccer-player-action-with-ball_23-2151057003.jpg',
-    videoUrl: 'https://www.facebook.com/watch/?v=1234567890',
-    views: 456789, duration: '15:20', timestamp: '2026-04-20T18:00:00Z'
-  },
-  {
-    id: 1009, title: 'Relaxing Music 24/7 - Stress Relief',
-    platform: 'youtube', category: 'Music',
-    thumbnail: 'https://i.ytimg.com/vi/5qap5aO4i9A/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=5qap5aO4i9A',
-    views: 2345678, duration: '3:45:30', timestamp: '2026-04-18T06:00:00Z'
-  },
-  {
-    id: 1010, title: 'TikTok Viral Video Compilation 🤣',
-    platform: 'tiktok', category: 'Comedy',
-    thumbnail: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/zzz~tplv-ph-10.jpg',
-    videoUrl: 'https://www.tiktok.com/@funny/video/7456789012345678902',
-    views: 987654, duration: '0:50', timestamp: '2026-04-25T20:00:00Z'
-  },
-  {
-    id: 1011, title: 'Travel Vlog: Exploring Japan 🇯🇵',
-    platform: 'youtube', category: 'Education',
-    thumbnail: 'https://i.ytimg.com/vi/7qX8VXpX8bI/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=7qX8VXpX8bI',
-    views: 34567, duration: '22:10', timestamp: '2026-04-23T15:30:00Z'
-  },
-  {
-    id: 1012, title: 'Best Instagram Travel Photos & Videos 2025',
-    platform: 'instagram', category: 'Entertainment',
-    thumbnail: 'https://img.freepik.com/free-photo/travel-vlogger-recording-video-with-smartphone_23-2150323940.jpg',
-    videoUrl: 'https://www.instagram.com/p/C9876543210/',
-    views: 123456, duration: '0:25', timestamp: '2026-04-24T12:15:00Z'
-  },
-  {
-    id: 1013, title: 'Gaming Highlights: Epic Moments 🎮',
-    platform: 'youtube', category: 'Gaming',
-    thumbnail: 'https://i.ytimg.com/vi/9bZkp7q19f0/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=9bZkp7q19f0',
-    views: 678901, duration: '18:45', timestamp: '2026-04-21T20:30:00Z'
-  },
-  {
-    id: 1014, title: 'News Update: Technology Breakthrough 2025',
-    platform: 'youtube', category: 'News',
-    thumbnail: 'https://i.ytimg.com/vi/3BHa7SWVb_s/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=3BHa7SWVb_s',
-    views: 45678, duration: '6:50', timestamp: '2026-04-25T07:00:00Z'
-  },
-  {
-    id: 1015, title: 'Workout Motivation: 30 Minute Full Body 🔥',
-    platform: 'youtube', category: 'Sports',
-    thumbnail: 'https://i.ytimg.com/vi/ml6cT4rY6Vc/maxresdefault.jpg',
-    videoUrl: 'https://www.youtube.com/watch?v=ml6cT4rY6Vc',
-    views: 234567, duration: '30:00', timestamp: '2026-04-22T05:30:00Z'
-  }
-];
+// ═══ State ═══
+let posts = [];      // সব পোস্ট (ভিডিও+ছবি)
+let videos = [];      // শুধু ভিডিও
+let currentVideoId = null;
 
-// ──── STATE ────
-let currentTab = 'home';
-let activeCategory = 'All';
-let videos = [];
-
-// ──── INIT ────
+// ═══ Init ═══
 document.addEventListener('DOMContentLoaded', () => {
-  // Load or initialize videos
-  const saved = localStorage.getItem('unistream_videos');
+  // Check if we have saved data
+  const saved = localStorage.getItem('zaraso_feed');
   if(saved) {
-    videos = JSON.parse(saved);
-    // Merge demo videos if not exists
-    DEMO_VIDEOS.forEach(demo => {
-      if(!videos.find(v => v.id === demo.id)) videos.push(demo);
-    });
-  } else {
-    videos = [...DEMO_VIDEOS];
+    try {
+      const data = JSON.parse(saved);
+      if(data.videos && data.videos.length > 0) {
+        videos = data.videos;
+        posts = data.posts || [];
+        renderProfile();
+        renderGrid(videos);
+      }
+    } catch(e) {}
   }
-  localStorage.setItem('unistream_videos', JSON.stringify(videos));
   
-  loadCategories();
-  renderHome();
-  
-  // Scroll effect
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
-  });
+  // Always try to fetch fresh data
+  fetchFeed();
 });
 
-// ──── CATEGORIES ────
-function loadCategories() {
-  const cats = ['All','Entertainment','Music','Gaming','Education','Sports','News','Technology','Comedy'];
-  const bar = document.getElementById('categoriesBar');
-  bar.innerHTML = cats.map(c => 
-    `<button class="cat-btn ${c==='All'?'active':''}" onclick="setCategory('${c}',this)">${c}</button>`
-  ).join('');
-}
-
-function setCategory(cat, btn) {
-  activeCategory = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  if(currentTab === 'home') renderHome();
-  else if(currentTab === 'trending') renderTrending();
-}
-
-// ──── PAGE NAV ────
-function showPage(page) {
-  currentTab = page;
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  document.getElementById('nav' + page.charAt(0).toUpperCase() + page.slice(1)).classList.add('active');
+// ═══════════════════════════════════════════════
+// 🔥 মূল ফাংশন: ইনস্টাগ্রাম ফিড ফেচ করা
+// ═══════════════════════════════════════════════
+async function fetchFeed() {
+  showLoading('Connecting to Instagram...');
+  document.getElementById('refreshBtn').disabled = true;
+  document.getElementById('loadStatus').textContent = 'Fetching posts...';
   
-  if(page === 'home') renderHome();
-  else if(page === 'trending') renderTrending();
-  else if(page === 'upload') renderUpload();
-  
-  window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-// ──── RENDER HOME ────
-function renderHome() {
-  const title = document.getElementById('sectionTitle');
-  title.innerHTML = '<i class="fas fa-star"></i> Latest Videos';
-  
-  const filtered = activeCategory === 'All' ? videos : videos.filter(v => v.category === activeCategory);
-  renderGrid(filtered.slice(0, 30));
-}
-
-// ──── RENDER TRENDING ────
-function renderTrending() {
-  const title = document.getElementById('sectionTitle');
-  title.innerHTML = '<i class="fas fa-fire"></i> Trending Videos';
-  
-  const sorted = [...videos].sort((a,b) => (b.views||0) - (a.views||0));
-  const filtered = activeCategory === 'All' ? sorted : sorted.filter(v => v.category === activeCategory);
-  renderGrid(filtered.slice(0, 30));
-}
-
-// ──── RENDER UPLOAD ────
-function renderUpload() {
-  const title = document.getElementById('sectionTitle');
-  title.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Import Video';
-  
-  const grid = document.getElementById('videoGrid');
-  grid.innerHTML = `
-    <div style="grid-column:1/-1;max-width:700px;margin:0 auto;width:100%;">
-      <div class="upload-area">
-        <i class="fas fa-link"></i>
-        <h3>Import from Any Platform</h3>
-        <p>Paste a YouTube, TikTok, Instagram or Facebook video URL below</p>
-        <div id="alertBox"></div>
-        <div class="url-input-group">
-          <input type="url" id="videoUrl" placeholder="https://www.youtube.com/watch?v=...">
-          <button onclick="importVideo()" id="importBtn" class="btn-primary">
-            <i class="fas fa-download"></i> Import Now
+  try {
+    // Step 1: Get profile page HTML — Instagram এর পাবলিক পেজ
+    const profileUrl = `https://www.instagram.com/${INSTAGRAM_USERNAME}/`;
+    
+    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(profileUrl)}`, {
+      headers: { 'Accept': 'application/json' }
+    });
+    
+    if(!response.ok) {
+      throw new Error('Failed to fetch profile (HTTP ' + response.status + ')');
+    }
+    
+    const data = await response.json();
+    const html = data.contents || '';
+    
+    if(!html || html.length < 100) {
+      throw new Error('Empty response from Instagram');
+    }
+    
+    document.getElementById('loadStatus').textContent = 'Parsing posts...';
+    
+    // Step 2: Extract JSON data from Instagram page
+    let jsonData = null;
+    
+    // Try window.__INITIAL_STATE__ first
+    const stateMatch = html.match(/window\.__INITIAL_STATE__\s*=\s*({.+?});/);
+    if(stateMatch) {
+      try {
+        jsonData = JSON.parse(stateMatch[1]);
+      } catch(e) {}
+    }
+    
+    // Try __NEXT_DATA__ (newer Instagram)
+    if(!jsonData) {
+      const nextMatch = html.match(/<script id="__NEXT_DATA__"[^>]*>([^<]+)<\/script>/);
+      if(nextMatch) {
+        try {
+          jsonData = JSON.parse(nextMatch[1]);
+        } catch(e) {}
+      }
+    }
+    
+    // Fallback: Try to find media data in scripts
+    if(!jsonData) {
+      const scriptMatches = html.match(/<script[^>]*>window\._sharedData\s*=\s*({.+?});<\/script>/);
+      if(scriptMatches) {
+        try {
+          jsonData = JSON.parse(scriptMatches[1]);
+        } catch(e) {}
+      }
+    }
+    
+    if(!jsonData) {
+      throw new Error('Could not parse Instagram data. The site structure may have changed.');
+    }
+    
+    // Step 3: Extract post shortcodes from the data
+    let shortcodes = [];
+    
+    // Try different possible data structures
+    const extractFrom = (obj) => {
+      if(!obj) return;
+      
+      // Common paths
+      const paths = [
+        'entry_data.ProfilePage[0].graphql.user.edge_owner_to_timeline_media.edges',
+        'props.pageProps.user.edge_owner_to_timeline_media.edges',
+        'props.pageProps.media.edges'
+      ];
+      
+      for(const path of paths) {
+        try {
+          const parts = path.split('.');
+          let current = obj;
+          for(const part of parts) {
+            if(current === null || current === undefined) break;
+            if(part.includes('[')) {
+              const match = part.match(/(\w+)\[(\d+)\]/);
+              current = current[match[1]]?.[parseInt(match[2])];
+            } else {
+              current = current[part];
+            }
+          }
+          if(current && Array.isArray(current)) {
+            return current.map(e => e?.node?.shortcode).filter(Boolean);
+          }
+        } catch(e) {}
+      }
+      return [];
+    };
+    
+    shortcodes = extractFrom(jsonData);
+    
+    if(shortcodes.length === 0) {
+      // Last resort: Try to extract shortcodes from HTML directly
+      const codeMatches = html.match(/instagram\.com\/p\/([\w-]+)/g);
+      if(codeMatches) {
+        const codes = new Set();
+        codeMatches.forEach(m => {
+          const c = m.match(/\/p\/([\w-]+)/);
+          if(c) codes.add(c[1]);
+        });
+        shortcodes = [...codes].slice(0, 30); // Max 30
+      }
+    }
+    
+    if(shortcodes.length === 0) {
+      throw new Error('No posts found in this profile');
+    }
+    
+    // Remove duplicates
+    shortcodes = [...new Set(shortcodes)];
+    
+    document.getElementById('loadStatus').textContent = `Found ${shortcodes.length} posts, fetching details...`;
+    
+    // Step 4: For each post, get oEmbed data to find which are videos
+    const allPosts = [];
+    const videoPosts = [];
+    
+    for(let i = 0; i < shortcodes.length; i++) {
+      const code = shortcodes[i];
+      document.getElementById('loadStatus').textContent = `Loading post ${i+1}/${shortcodes.length}...`;
+      
+      try {
+        const oembedUrl = `https://api.instagram.com/oembed?url=https://www.instagram.com/p/${code}/&omitscript=true`;
+        
+        const oembedRes = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(oembedUrl)}`);
+        
+        if(oembedRes.ok) {
+          const oembedData = await oembedRes.json();
+          let oembedJson;
+          try {
+            oembedJson = JSON.parse(oembedData.contents);
+          } catch(e) {
+            oembedJson = typeof oembedData.contents === 'object' ? oembedData.contents : JSON.parse(oembedData.contents);
+          }
+          
+          const post = {
+            id: code,
+            shortcode: code,
+            title: oembedJson.title || `Instagram Post by ${INSTAGRAM_USERNAME}`,
+            thumbnail: oembedJson.thumbnail_url || '',
+            authorName: oembedJson.author_name || INSTAGRAM_USERNAME,
+            authorUrl: oembedJson.author_url || '',
+            html: oembedJson.html || '',
+            url: `https://www.instagram.com/p/${code}/`,
+            platform: 'instagram',
+            category: 'Entertainment',
+            views: 0,
+            duration: '0:15',
+            timestamp: new Date().toISOString()
+          };
+          
+          allPosts.push(post);
+          
+          // Check if it's a video — oEmbed gives thumbnail_url for images too
+          // We try to detect video by fetching the actual page
+          const isVideo = await checkIfVideo(code);
+          if(isVideo) {
+            post.isVideo = true;
+            videoPosts.push(post);
+          }
+        }
+      } catch(e) {
+        console.log('Error fetching post', code, e.message);
+      }
+      
+      // Little delay to avoid rate limiting
+      await new Promise(r => setTimeout(r, 300));
+    }
+    
+    if(videoPosts.length === 0) {
+      // If we couldn't detect videos, just show all posts as videos
+      videoPosts.push(...allPosts);
+    }
+    
+    posts = allPosts;
+    videos = videoPosts;
+    
+    // Save to localStorage
+    localStorage.setItem('zaraso_feed', JSON.stringify({posts, videos, savedAt: Date.now()}));
+    
+    renderProfile();
+    renderGrid(videos);
+    
+    document.getElementById('loadStatus').textContent = `Loaded ${videoPosts.length} videos!`;
+    setTimeout(() => {
+      document.getElementById('loadStatus').textContent = 'Click any video to watch';
+    }, 2000);
+    
+  } catch(err) {
+    console.error('Fetch error:', err);
+    
+    // Try fallback: Use a different proxy
+    try {
+      await fallbackFetch();
+      return;
+    } catch(e2) {
+      document.getElementById('videoGrid').innerHTML = `
+        <div class="empty-state">
+          <i class="fab fa-instagram" style="color:#e4405f;font-size:48px"></i>
+          <h3>Could not load videos</h3>
+          <p style="font-size:13px;color:#999;margin:8px 0">${err.message}</p>
+          <p style="font-size:12px;color:#bbb">Try again later or check the username</p>
+          <button class="refresh-btn" style="margin-top:16px" onclick="fetchFeed()">
+            <i class="fas fa-redo"></i> Try Again
           </button>
-        </div>
-        <div class="platform-tags">
-          <span><i class="fab fa-youtube" style="color:#ff0000"></i> YouTube</span>
-          <span><i class="fab fa-tiktok"></i> TikTok</span>
-          <span><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram</span>
-          <span><i class="fab fa-facebook" style="color:#1877f2"></i> Facebook</span>
-        </div>
-      </div>
-    </div>`;
+        </div>`;
+    }
+  } finally {
+    hideLoading();
+    document.getElementById('refreshBtn').disabled = false;
+  }
 }
 
-// ──── RENDER GRID ────
+// ═══ Fallback: Try different proxy ═══
+async function fallbackFetch() {
+  document.getElementById('loadStatus').textContent = 'Trying alternative method...';
+  
+  // Get the oembed for the profile itself (won't give all posts but gives profile info)
+  const profileOembed = `https://api.instagram.com/oembed?url=https://www.instagram.com/${INSTAGRAM_USERNAME}/&omitscript=true`;
+  
+  const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(profileOembed)}`);
+  const data = await res.json();
+  
+  let json;
+  try {
+    json = JSON.parse(data.contents);
+  } catch(e) {
+    json = typeof data.contents === 'object' ? data.contents : JSON.parse(data.contents);
+  }
+  
+  // We at least have profile info
+  videos = [{
+    id: 'profile',
+    shortcode: '',
+    title: `${json.author_name || INSTAGRAM_USERNAME} - Instagram Profile`,
+    thumbnail: json.thumbnail_url || '',
+    authorName: json.author_name || INSTAGRAM_USERNAME,
+    html: json.html || '',
+    url: `https://www.instagram.com/${INSTAGRAM_USERNAME}/`,
+    platform: 'instagram',
+    category: 'Entertainment',
+    views: 0,
+    isVideo: true,
+    duration: '0:30',
+    timestamp: new Date().toISOString()
+  }];
+  
+  renderGrid(videos);
+  throw new Error('Limited data - could only get profile info');
+}
+
+// ═══ Check if a post is a video ═══
+async function checkIfVideo(shortcode) {
+  try {
+    // Method: Fetch the Instagram embed HTML and check for video tags
+    const postUrl = `https://www.instagram.com/p/${shortcode}/embed/captioned/`;
+    const res = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(postUrl)}`);
+    
+    if(res.ok) {
+      const data = await res.json();
+      const html = typeof data.contents === 'string' ? data.contents : JSON.stringify(data.contents);
+      return html.includes('<video') || html.includes('video_url') || html.includes('"is_video":true');
+    }
+    return true; // If can't check, assume it's a video
+  } catch(e) {
+    return true;
+  }
+}
+
+// ═══ Render Profile ═══
+function renderProfile() {
+  const name = `@${INSTAGRAM_USERNAME}`;
+  document.getElementById('navName').textContent = name;
+  document.getElementById('fullName').textContent = `@${INSTAGRAM_USERNAME}`;
+  document.getElementById('videoCount').textContent = videos.length;
+  document.getElementById('videoCountLabel').textContent = `(${videos.length} videos)`;
+  
+  const totalViews = videos.reduce((sum, v) => sum + (v.views || 0), 0);
+  document.getElementById('totalViews').textContent = formatNum(totalViews);
+}
+
+// ═══ Render Grid ═══
 function renderGrid(list) {
   const grid = document.getElementById('videoGrid');
   
   if(list.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:80px 20px;color:#999;">
-      <i class="fas fa-inbox" style="font-size:48px;margin-bottom:15px;display:block;color:#ddd"></i>
-      <h3 style="color:#666;margin-bottom:8px">No videos found</h3>
-      <p style="font-size:14px">Try a different category or <a href="#" onclick="showPage('upload')" style="color:#e53935;font-weight:600">import a video</a></p>
+    grid.innerHTML = `<div class="empty-state">
+      <i class="fas fa-video-slash"></i>
+      <h3>No videos found</h3>
+      <p>This account may have no videos</p>
     </div>`;
     return;
   }
   
   grid.innerHTML = list.map(v => {
-    const thumb = v.thumbnail || 'https://via.placeholder.com/480x270/f5f5f5/ccc?text=No+Thumbnail';
-    const platIcons = {youtube:'fab fa-youtube', tiktok:'fab fa-tiktok', instagram:'fab fa-instagram', facebook:'fab fa-facebook'};
-    const platColors = {youtube:'#ff0000', tiktok:'#000', instagram:'#e4405f', facebook:'#1877f2'};
-    
-    return `<div class="video-card" onclick="openVideo(${v.id})">
+    const thumb = v.thumbnail || 'https://via.placeholder.com/480x270/f5f5f5/ccc?text=Instagram';
+    return `<div class="video-card" onclick="openVideo('${v.id}')">
       <div class="thumb" style="background-image:url('${thumb}')">
-        <div class="play-circle"><i class="fas fa-play"></i></div>
+        <div class="play-overlay"><div class="play-circle"><i class="fas fa-play"></i></div></div>
         ${v.duration ? `<span class="duration">${v.duration}</span>` : ''}
-        <span class="source-badge"><i class="${platIcons[v.platform]||'fas fa-globe'}"></i> ${v.platform||'Web'}</span>
       </div>
       <div class="info">
-        <h3>${v.title}</h3>
+        <h3>${v.title || 'Instagram Video'}</h3>
         <div class="meta">
-          <span><i class="${platIcons[v.platform]||'fas fa-globe'}" style="color:${platColors[v.platform]||'#999'}"></i> ${v.platform||'Web'}</span>
-          <span><i class="fas fa-eye"></i> ${formatViews(v.views||0)}</span>
-          <span>${timeAgo(v.timestamp)}</span>
+          <span><i class="fas fa-eye"></i> ${formatNum(v.views||0)}</span>
+          <span><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram</span>
         </div>
       </div>
     </div>`;
   }).join('');
 }
 
-// ──── OPEN VIDEO ────
+// ═══ Open Video (full page embed) ═══
 function openVideo(id) {
   const v = videos.find(x => x.id === id);
   if(!v) return;
   
-  // Increment views
+  // Update view count
   v.views = (v.views||0) + 1;
-  const idx = videos.findIndex(x => x.id === id);
-  videos[idx] = v;
-  localStorage.setItem('unistream_videos', JSON.stringify(videos));
+  localStorage.setItem('zaraso_feed', JSON.stringify({posts, videos, savedAt: Date.now()}));
   
-  // Build proxy URL
-  const proxyUrl = v.videoUrl 
-    ? `${WORKER_URL}/proxy/stream?url=${encodeURIComponent(v.videoUrl)}`
-    : `${WORKER_URL}/proxy/stream?url=${encodeURIComponent('https://www.youtube.com/watch?v=dQw4w9WgXcQ')}`;
+  // Show watch page
+  document.getElementById('homePage').style.display = 'none';
+  document.getElementById('profileHeader').style.display = 'none';
+  document.getElementById('watchPage').classList.add('active');
   
-  document.getElementById('modalTitle').textContent = v.title;
-  document.getElementById('modalInfo').innerHTML = `
-    <span><i class="fas fa-eye"></i> ${formatViews(v.views)} views</span>
-    <span><i class="fas fa-clock"></i> ${timeAgo(v.timestamp)}</span>
-    <span><i class="fas fa-tag"></i> ${v.category || 'General'}</span>
-    ${v.duration ? `<span><i class="fas fa-hourglass-half"></i> ${v.duration}</span>` : ''}
+  document.getElementById('watchTitle').textContent = v.title || 'Instagram Video';
+  document.getElementById('watchMeta').innerHTML = `
+    <span><i class="fas fa-eye"></i> ${formatNum(v.views)} views</span>
+    <span><i class="fab fa-instagram" style="color:#e4405f"></i> Instagram</span>
+    <span><i class="fas fa-user"></i> ${v.authorName || INSTAGRAM_USERNAME}</span>
   `;
   
-  const videoEl = document.getElementById('modalVideo');
-  const source = videoEl.querySelector('source');
-  source.src = proxyUrl;
-  videoEl.load();
+  // Set video player — if we have direct video URL use it, otherwise use embed
+  const player = document.getElementById('player');
   
-  document.getElementById('videoModal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  
-  // Prevent right-click on video
-  videoEl.addEventListener('contextmenu', e => e.preventDefault());
-}
-
-function closeModal() {
-  const videoEl = document.getElementById('modalVideo');
-  videoEl.pause();
-  videoEl.currentTime = 0;
-  document.getElementById('videoModal').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Close modal on overlay click
-document.getElementById('videoModal').addEventListener('click', function(e) {
-  if(e.target === this) closeModal();
-});
-
-// ──── IMPORT VIDEO ────
-function importVideo() {
-  const url = document.getElementById('videoUrl').value.trim();
-  const alertBox = document.getElementById('alertBox');
-  
-  if(!url) { showAlert('Please enter a video URL','error'); return; }
-  
-  const platform = detectPlatform(url);
-  if(platform === 'other') { showAlert('⚠️ Only YouTube, TikTok, Instagram & Facebook URLs are supported','error'); return; }
-  
-  showLoading('Fetching video information...');
-  document.getElementById('importBtn').disabled = true;
-  document.getElementById('importBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Importing...';
-  
-  fetch(`${WORKER_URL}/fetch?url=${encodeURIComponent(url)}`)
-    .then(r => {
-      if(!r.ok) throw new Error('Proxy error: ' + r.status);
-      return r.json();
-    })
-    .then(data => {
-      hideLoading();
-      document.getElementById('importBtn').disabled = false;
-      document.getElementById('importBtn').innerHTML = '<i class="fas fa-download"></i> Import Now';
-      
-      const newVideo = {
-        id: Date.now() + Math.floor(Math.random()*9999),
-        title: data.title || 'Untitled Video',
-        platform: platform,
-        category: 'Entertainment',
-        thumbnail: data.thumbnail || '',
-        videoUrl: url,
-        views: 0,
-        duration: data.duration || '',
-        timestamp: new Date().toISOString()
-      };
-      
-      videos.unshift(newVideo);
-      localStorage.setItem('unistream_videos', JSON.stringify(videos));
-      
-      document.getElementById('videoUrl').value = '';
-      showAlert(`✅ Video imported successfully! <a href="#" onclick="showPage('home')">View on Home →</a>`, 'success');
-    })
-    .catch(err => {
-      hideLoading();
-      document.getElementById('importBtn').disabled = false;
-      document.getElementById('importBtn').innerHTML = '<i class="fas fa-download"></i> Import Now';
-      showAlert('Error: ' + err.message, 'error');
-    });
-}
-
-// ──── SEARCH ────
-function searchVideos(e) {
-  e.preventDefault();
-  const q = document.getElementById('searchInput').value.toLowerCase().trim();
-  if(!q) return;
-  
-  const results = videos.filter(v => v.title.toLowerCase().includes(q));
-  
-  document.getElementById('sectionTitle').innerHTML = `<i class="fas fa-search"></i> Results: "${q}"`;
-  
-  if(results.length === 0) {
-    document.getElementById('videoGrid').innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:80px;color:#999;">
-      <i class="fas fa-search" style="font-size:40px;margin-bottom:15px;display:block;color:#ddd"></i>
-      <h3 style="color:#666">No videos found for "${q}"</h3>
-    </div>`;
-    return;
+  if(v.streamUrl) {
+    player.src = v.streamUrl;
+    player.load();
+  } else {
+    // No direct URL — show the Instagram embed page in an iframe-like way
+    // We just show the embed HTML
+    player.style.display = 'none';
+    document.getElementById('videoPlayerWrap').innerHTML = `
+      <div style="width:100%;max-height:80vh;background:#000;display:flex;align-items:center;justify-content:center;padding:40px 20px;min-height:400px;">
+        <div style="max-width:500px;width:100%;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)">
+          <div style="padding:20px;text-align:center;background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);color:#fff">
+            <i class="fab fa-instagram" style="font-size:48px;margin-bottom:10px;display:block"></i>
+            <h3 style="font-weight:700">Instagram Video</h3>
+            <p style="font-size:13px;opacity:.9;margin-top:4px">${v.title || 'Instagram Video'}</p>
+          </div>
+          <div style="padding:30px;text-align:center">
+            <p style="color:#888;margin-bottom:16px;font-size:14px">Watch on Instagram</p>
+            <a href="${v.url}" target="_blank" rel="noopener noreferrer" 
+               style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;
+                      background:linear-gradient(135deg,#833ab4,#fd1d1d,#e95950);color:#fff;
+                      border-radius:24px;text-decoration:none;font-size:14px;font-weight:600;
+                      transition:.3s">
+              <i class="fab fa-instagram"></i> Open in Instagram
+            </a>
+            <p style="margin-top:20px;font-size:12px;color:#bbb">
+              <i class="fas fa-info-circle"></i> 
+              Video embedded from Instagram via oEmbed
+            </p>
+          </div>
+        </div>
+      </div>`;
   }
   
-  renderGrid(results);
+  // Related videos
+  const related = videos.filter(x => x.id !== id).slice(0,6);
+  document.getElementById('relatedGrid').innerHTML = related.length > 0
+    ? related.map(r => {
+        const rt = r.thumbnail || 'https://via.placeholder.com/480x270/f5f5f5/ccc';
+        return `<div class="related-card" onclick="openVideo('${r.id}')">
+          <div class="thumb" style="background-image:url('${rt}')"></div>
+          <div class="info"><h3>${r.title || 'Video'}</h3></div>
+        </div>`;
+      }).join('')
+    : '<p style="color:#aaa;font-size:13px">No more videos</p>';
+  
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// ──── HELPERS ────
-function detectPlatform(url) {
-  if(/youtube\.com|youtu\.be|m\.youtube/i.test(url)) return 'youtube';
-  if(/tiktok\.com|vm\.tiktok/i.test(url)) return 'tiktok';
-  if(/instagram\.com|instagr\.am|cdninstagram/i.test(url)) return 'instagram';
-  if(/facebook\.com|fb\.com|fb\.watch|fbsbx/i.test(url)) return 'facebook';
-  return 'other';
+// ═══ Close Watch ═══
+function closeWatch() {
+  const player = document.getElementById('player');
+  player.pause();
+  player.src = '';
+  player.style.display = '';
+  document.getElementById('videoPlayerWrap').innerHTML = '';
+  document.getElementById('watchPage').classList.remove('active');
+  document.getElementById('homePage').style.display = '';
+  document.getElementById('profileHeader').style.display = '';
+  renderProfile();
 }
 
-function formatViews(v) {
-  if(v >= 1000000) return (v/1000000).toFixed(1) + 'M';
-  if(v >= 1000) return (v/1000).toFixed(1) + 'K';
-  return v;
-}
+function showHome() { closeWatch(); }
 
-function timeAgo(t) {
-  const diff = Date.now() - new Date(t).getTime();
-  const secs = Math.floor(diff/1000);
-  if(secs < 60) return secs + 's ago';
-  const mins = Math.floor(secs/60);
-  if(mins < 60) return mins + 'm ago';
-  const hrs = Math.floor(mins/60);
-  if(hrs < 24) return hrs + 'h ago';
-  const days = Math.floor(hrs/24);
-  if(days < 30) return days + 'd ago';
-  const months = Math.floor(days/30);
-  return months + 'mo ago';
-}
-
-function showAlert(msg, type) {
-  const box = document.getElementById('alertBox');
-  if(!box) return;
-  box.innerHTML = `<div class="alert alert-${type}"><i class="fas ${type==='success'?'fa-check-circle':'fa-exclamation-circle'}"></i> ${msg}</div>`;
-  if(type==='success') setTimeout(() => box.innerHTML='', 6000);
-}
-
+// ═══ Helpers ═══
 function showLoading(msg) {
   document.getElementById('loadingText').textContent = msg || 'Loading...';
   document.getElementById('loadingScreen').classList.add('active');
 }
-
 function hideLoading() {
   document.getElementById('loadingScreen').classList.remove('active');
 }
+function formatNum(n) {
+  if(!n) return '0';
+  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
+  if(n>=1000) return (n/1000).toFixed(1)+'K';
+  return n;
+}
 </script>
 </body>
-</html>
+  </html>
